@@ -1,0 +1,10 @@
+{
+	"description": "Command-line thesaurus",
+	"license": "Apache Licence 2.0",
+	"authors": [
+		"Caleb Hattingh"
+	],
+	"copyright": "Copyright © 2018, Caleb Hattingh",
+	"name": "thesauromatic",
+	"dflags-dmd": ["-Jsource"]
+}

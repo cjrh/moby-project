@@ -1,0 +1,14 @@
+.dub
+docs.json
+__dummy.html
+docs/
+thesauromatic.so
+thesauromatic.dylib
+thesauromatic.dll
+thesauromatic.a
+thesauromatic.lib
+thesauromatic-test-*
+*.exe
+*.o
+*.obj
+*.lst
