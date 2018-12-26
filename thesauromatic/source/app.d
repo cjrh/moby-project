@@ -8,16 +8,19 @@ string word;
 
 void main(string[] args)
 {
-    /* auto helpInformation = getopt( */
-    /*         args, */
-    /*         "word", &word, */
-    /*         ); */
-    /*  */
-    /* if (helpInformation.helpWanted) */
-    /* { */
-    /*     defaultGetoptPrinter("Usage: thesauromatic <word>", */
-    /*             helpInformation.options); */
-    /* } */
+    auto helpInformation = getopt(
+            args,
+            );
+
+    if (helpInformation.helpWanted)
+    {
+        defaultGetoptPrinter(
+                "Usage: thesauromatic <word>\n\n" ~
+                "Given <word> this program will print out a list\n" ~
+                "of synonyms, one per line. This makes it easy to\n" ~
+                "consume with other tools.",
+                helpInformation.options);
+    }
 
     if (args.length == 2) {
         writeln(syns(args[1]));
