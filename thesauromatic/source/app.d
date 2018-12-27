@@ -9,10 +9,7 @@ string word;
 
 void main(string[] args)
 {
-    auto helpInformation = getopt(
-            args,
-            );
-
+    auto helpInformation = getopt(args);
     if (helpInformation.helpWanted)
     {
         defaultGetoptPrinter(
@@ -27,6 +24,7 @@ void main(string[] args)
         writeln(syns(args[1]));
     } else {
         writeln("ERROR: At least one word must be specified.");
+        writeln(syns("blase"));
     }
 }
 
@@ -41,9 +39,11 @@ static string[string] process() {
     return result;
 }
 
-private string syns(string word) {
+private string syns(const string word) {
     auto x = process();
-    return x[word];
+    if (word in x)
+        return x[word];
+    return "";
 }
 
 
