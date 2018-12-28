@@ -2,10 +2,21 @@ import std.stdio;
 import std.string;
 import std.getopt;
 import std.algorithm.setops;
+import std.algorithm.iteration;
 import std.typecons;
 import std.array;
+import std.range;
+import std.file: slurp;
 
 string word;
+/* private static string raw = import("mobythes.aur"); */
+/* private static string wordsonly = import("wordsonly.txt"); */
+
+/* string[][string] synonyms; */
+/*  */
+/* static this() { */
+/*     synonyms = mixin(import("readymixin.txt")); */
+/* } */
 
 void main(string[] args)
 {
@@ -28,21 +39,28 @@ void main(string[] args)
     }
 }
 
-static string[string] process() {
-    const string raw = import("mobythes.aur");
-    auto lines = splitLines(raw);
+private static string[string] process() {
+    auto s = slurp!(string, string)("source/mobylf.txt", "%s,%s");
+    /* auto lines = splitLines(raw); */
     string[string] result;
-    foreach (line; lines) {
-        auto items = line.split(",");
-        result[items[0]] = items[1..$].join("\n");
+    /* auto f5 = File("readymixin.txt", "w"); */
+    /* f5.writeln("["); */
+    foreach (tup; s) {
+        result[tup[0]] = tup[1];
+        /* f5.writefln( */
+        /*     "\"%s\": [%s],", */
+        /*     items[0], map!(a => "\"" ~ a ~ "\"")(items[1..$]).join(",") */
+        /* ); */
     }
+    /* f5.writeln("]"); */
     return result;
 }
 
 private string syns(const string word) {
     auto x = process();
     if (word in x)
-        return x[word];
+        return x[word].replace(",", "\n");
+        /* return map(x[word].join("\n"); */
     return "";
 }
 

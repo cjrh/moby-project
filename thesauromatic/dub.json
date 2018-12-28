@@ -6,5 +6,5 @@
 	],
 	"copyright": "Copyright © 2018, Caleb Hattingh",
 	"name": "thesauromatic",
-	"dflags-dmd": ["-Jsource"]
+	"dflags-dmd": ["-Jsource", "-J."]
 }
